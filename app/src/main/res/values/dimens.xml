@@ -1,0 +1,9 @@
+<resources>
+
+
+    <dimen name="default_stack_spacing">0dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+
+
+
+</resources>
