@@ -1,6 +1,7 @@
 package com.example.rezwan.spellingc;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.ScaleAnimation;
+import android.widget.TextView;
 
 import dyanamitechetan.vusikview.VusikView;
 
@@ -23,6 +25,9 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/sweet_sensations.ttf");
+        TextView myTextView = (TextView)findViewById(R.id.ttl);
+        myTextView.setTypeface(myTypeface);
         final Animation anim = new ScaleAnimation(
                 0f, 1f, // Start and end values for the X axis scaling
                 0f, 1f, // Start and end values for the Y axis scaling
@@ -57,6 +62,13 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent  = new Intent(Home.this, Study.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.img3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(Home.this, Settings.class);
                 startActivity(intent);
             }
         });

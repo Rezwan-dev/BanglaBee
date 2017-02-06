@@ -14,10 +14,28 @@
         app:fallSpeed="0.05"
         app:fallCount="20"
         />
+    <RelativeLayout
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LL">
 
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/ttl"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:textSize="52sp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="24dp"/>
+    </RelativeLayout>
 
 
     <LinearLayout
+        android:id="@+id/LL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

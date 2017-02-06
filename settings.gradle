@@ -1,1 +1,1 @@
-include ':app', ':lib', ':vusikview', ':gif'
+include ':app', ':lib', ':vusikview', ':gif', ':incdeclibrary'

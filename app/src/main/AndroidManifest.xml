@@ -19,7 +19,8 @@
         <activity
             android:name=".Study"
             android:label="@string/title_activity_study"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>

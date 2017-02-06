@@ -14,4 +14,5 @@
     <color name="icons">#212121</color>
     <color name="divider">#BDBDBD</color>
     <color name="cardColor1">#A1C181</color>
+    <color name="toolbar">#17000000</color>
 </resources>
