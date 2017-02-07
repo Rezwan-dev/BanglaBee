@@ -20,7 +20,8 @@
             android:name=".Study"
             android:label="@string/title_activity_study"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".Play"></activity>
     </application>
 
 </manifest>

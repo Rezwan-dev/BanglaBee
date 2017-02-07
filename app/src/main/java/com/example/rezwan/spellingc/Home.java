@@ -72,5 +72,13 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.img1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(Home.this, Play.class);
+                startActivity(intent);
+            }
+        });
     }
 }

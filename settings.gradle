@@ -1,1 +1,1 @@
-include ':app', ':lib', ':vusikview', ':gif', ':incdeclibrary'
+include ':app', ':splash', ':vusikview', ':gif', ':incdeclibrary', ':recycleviewpager', ':morphbutton'

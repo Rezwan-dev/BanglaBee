@@ -44,6 +44,7 @@ public class GifView extends View {
 
     private volatile boolean mPaused;
     private boolean mVisible = true;
+    private boolean mRepeat;
 
     public GifView(Context context) {
         this(context, null);
@@ -76,6 +77,7 @@ public class GifView extends View {
         //-1 is default value
         mMovieResourceId = array.getResourceId(R.styleable.GifView_gif, -1);
         mPaused = array.getBoolean(R.styleable.GifView_paused, false);
+        mRepeat = array.getBoolean(R.styleable.GifView_repeat, false);
 
         array.recycle();
 
@@ -113,11 +115,11 @@ public class GifView extends View {
     public void pause() {
         if (!this.mPaused) {
             this.mPaused = true;
-
             invalidate();
         }
 
     }
+
 
 
     public boolean isPaused() {
@@ -235,7 +237,7 @@ public class GifView extends View {
         if (dur == 0) {
             dur = DEFAULT_MOVIE_VIEW_DURATION;
         }
-        if(dur > 0 && (now - mMovieStart) >= dur){
+        if(dur > 0 && (now - mMovieStart) >= dur && !mRepeat){
             pause();
         }
 

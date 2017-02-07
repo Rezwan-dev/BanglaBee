@@ -25,7 +25,8 @@
             android:text="Settings"
             android:textSize="24sp"
             android:textColor="@android:color/white"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            android:textStyle="normal|bold" />
     </RelativeLayout>
 
     <LinearLayout
