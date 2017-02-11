@@ -2,6 +2,7 @@ package com.example.rezwan.spellingc;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -78,6 +79,20 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent  = new Intent(Home.this, Play.class);
                 startActivity(intent);
+            }
+        });
+        findViewById(R.id.img4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(Home.this, Stats.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.testFrag).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Congrats newFragment = new  Congrats();
+                newFragment.show(getSupportFragmentManager(), "dialog");
             }
         });
     }

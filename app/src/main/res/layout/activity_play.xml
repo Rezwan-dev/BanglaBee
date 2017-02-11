@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1">
-            
+
             <ImageView
                 android:id="@+id/playSbtn"
                 android:scaleType="centerInside"

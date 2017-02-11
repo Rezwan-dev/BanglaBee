@@ -27,11 +27,11 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     private int mCurrentItemId = 0;
 
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
-        public final TextView title;
+       // public final TextView title;
 
         public SimpleViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
+          //  title = (TextView) view.findViewById(R.id.title);
         }
     }
 
@@ -68,7 +68,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
 
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, final int position) {
-        holder.title.setText(mItems.get(position).toString());
+        //holder.title.setText(mItems.get(position).toString());
 
         final View itemView = holder.itemView;
         itemView.setOnClickListener(new View.OnClickListener() {

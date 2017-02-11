@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SpellingC.iml" filepath="$PROJECT_DIR$/SpellingC.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explosionfield/explosionfield.iml" filepath="$PROJECT_DIR$/explosionfield/explosionfield.iml" />
       <module fileurl="file://$PROJECT_DIR$/gif/gif.iml" filepath="$PROJECT_DIR$/gif/gif.iml" />
       <module fileurl="file://$PROJECT_DIR$/incdeclibrary/incdeclibrary.iml" filepath="$PROJECT_DIR$/incdeclibrary/incdeclibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/morphbutton/morphbutton.iml" filepath="$PROJECT_DIR$/morphbutton/morphbutton.iml" />

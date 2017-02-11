@@ -29,9 +29,9 @@ public class Settings extends AppCompatActivity {
         incdec.enableLongPress(true,true,500);
 
         ArrayList<String> values2=new ArrayList<>();
+        values2.add("5");
         values2.add("10");
         values2.add("15");
-        values2.add("20");
 
         IncDecImageButton incdec2=(IncDecImageButton)findViewById(R.id.incdec2);
         incdec2.setConfiguration(LinearLayout.HORIZONTAL,IncDecCircular.TYPE_ARRAY,

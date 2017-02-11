@@ -21,7 +21,10 @@
             android:label="@string/title_activity_study"
             android:theme="@style/AppTheme" />
         <activity android:name=".Settings" />
-        <activity android:name=".Play"></activity>
+        <activity
+            android:name=".Play"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Stats"></activity>
     </application>
 
 </manifest>

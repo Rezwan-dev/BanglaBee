@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/explosionfield" />
             <option value="$PROJECT_DIR$/gif" />
             <option value="$PROJECT_DIR$/incdeclibrary" />
             <option value="$PROJECT_DIR$/morphbutton" />

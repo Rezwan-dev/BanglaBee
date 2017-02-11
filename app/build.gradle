@@ -37,4 +37,5 @@ dependencies {
     compile project(':recycleviewpager')
     compile project(':morphbutton')
     compile project(':splash')
+    compile project(':explosionfield')
 }
