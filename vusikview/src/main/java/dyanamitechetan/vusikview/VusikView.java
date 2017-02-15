@@ -169,7 +169,8 @@ public class VusikView extends View {
             TO INITIATE myImageList WITH SOME VALUES IF NONE WAS PROVIDED
             */
             if(myImageList==null){
-                         myImageList = new int[]{R.drawable.note1, R.drawable.note2};
+                         myImageList = new int[]{R.drawable.note_0, R.drawable.note_1, R.drawable.note_2, R.drawable.note_3, R.drawable.note_4, R.drawable.note_5
+                                 , R.drawable.note_6, R.drawable.note_7, R.drawable.note_8, R.drawable.note_9};
                 images = new Drawable[myImageList.length];
 
                 for(int i=0;i<myImageList.length;i++){

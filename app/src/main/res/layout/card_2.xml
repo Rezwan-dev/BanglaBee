@@ -20,20 +20,28 @@
         android:paddingRight="16dp">
 
         <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
+            android:gravity="center"
         >
             <EditText
                 android:layout_gravity="bottom"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="New Text"
                 android:id="@+id/title"
                 android:textSize="32sp"
                 android:textColor="#7FB685"
                 android:textStyle="bold|italic" />
-
+        <com.dd.morphingbutton.MorphingButton
+            android:id="@+id/morph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:textColor="@color/white"
+            android:text="Submit"/>
 
 
         </LinearLayout>

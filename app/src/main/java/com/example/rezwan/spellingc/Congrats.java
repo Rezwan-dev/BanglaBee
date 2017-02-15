@@ -31,6 +31,12 @@ public class Congrats extends DialogFragment {
                              Bundle savedInstanceState) {
          v = inflater.inflate(R.layout.fragment_congrats, container, false);
         v.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        v.findViewById(R.id.okBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
         return v;
     }
 
@@ -52,6 +58,7 @@ public class Congrats extends DialogFragment {
                 ((ExplosionField)v.findViewById(R.id.explosion)).explode(v.findViewById(R.id.makeExplode4), imageView);
                 ((ExplosionField)v.findViewById(R.id.explosion)).explode(v.findViewById(R.id.makeExplode5), imageView);
                 ((ExplosionField)v.findViewById(R.id.explosion)).explode(v.findViewById(R.id.makeExplode6), imageView);
+                ((ExplosionField)v.findViewById(R.id.explosion)).explode(v.findViewById(R.id.makeExplode7), imageView);
             }
         }, 500);
 

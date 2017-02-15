@@ -18,7 +18,7 @@
             android:layout_height="48dp"
             android:layout_centerVertical="true"
             android:padding="4dp"
-            android:src="?attr/actionModeCloseDrawable" />
+            android:src="@drawable/back_arrow" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         <com.example.rezwan.spellingc.RoundedImage
             android:layout_width="86dp"
             android:layout_height="86dp"
-            android:src="@drawable/pro_pic_4" />
+            android:src="@drawable/pro_pic_4_old" />
 
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Your name here"
+            android:text="Player"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="normal|bold" />
@@ -64,11 +64,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
-                <ImageView
-                    android:padding="10dp"
-                    android:src="@drawable/play"
+                <RelativeLayout
                     android:layout_width="100dp"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp">
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/base_n"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:text="72"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal|bold" />
+                </RelativeLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,11 +98,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
-                <ImageView
-                    android:padding="10dp"
-                    android:src="@drawable/play"
+                <RelativeLayout
                     android:layout_width="100dp"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp">
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/base_n"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:text="46"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal|bold" />
+                </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,11 +130,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
-                <ImageView
-                    android:padding="10dp"
-                    android:src="@drawable/play"
+                <RelativeLayout
                     android:layout_width="100dp"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp">
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/base_n"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:text="13"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal|bold" />
+                </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -133,7 +170,7 @@
                 android:gravity="center">
                 <ImageView
                     android:padding="10dp"
-                    android:src="@drawable/play"
+                    android:src="@drawable/study_s"
                     android:layout_width="100dp"
                     android:layout_height="100dp" />
                 <TextView
@@ -152,11 +189,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
-                <ImageView
-                    android:padding="10dp"
-                    android:src="@drawable/play"
+                <RelativeLayout
                     android:layout_width="100dp"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp">
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/base_n"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:text="8"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal|bold" />
+                </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -172,11 +221,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
-                <ImageView
-                    android:padding="10dp"
-                    android:src="@drawable/play"
+                <RelativeLayout
                     android:layout_width="100dp"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp">
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/base_n"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:text="3"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal|bold" />
+                </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

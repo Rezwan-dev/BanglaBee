@@ -128,7 +128,7 @@
                     <com.example.rezwan.spellingc.RoundedImage
                         android:layout_width="98dp"
                         android:layout_height="98dp"
-                        android:src="@drawable/pro_pic_4"
+                        android:src="@drawable/pro_pic_4_old"
                         app:border_width="2dp"
                         app:border_color="@color/white"/>
 
@@ -167,12 +167,25 @@
 
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/makeExplode7"
+                    android:layout_width="48dp"
+                    android:layout_height="96dp"
+                    android:padding="8dp"
+                    android:src="@drawable/baloon2"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_alignTop="@+id/makeExplode0"
+                    android:layout_alignLeft="@+id/makeExplode3"
+                    android:layout_alignStart="@+id/makeExplode3" />
+
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/okBtn"
                     android:padding="16dp"
                     android:layout_weight="1"
                     android:layout_width="0dp"

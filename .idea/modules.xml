@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SpellingC.iml" filepath="$PROJECT_DIR$/SpellingC.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explosionfield/explosionfield.iml" filepath="$PROJECT_DIR$/explosionfield/explosionfield.iml" />
       <module fileurl="file://$PROJECT_DIR$/explosionfield/explosionfield.iml" filepath="$PROJECT_DIR$/explosionfield/explosionfield.iml" />
       <module fileurl="file://$PROJECT_DIR$/gif/gif.iml" filepath="$PROJECT_DIR$/gif/gif.iml" />
       <module fileurl="file://$PROJECT_DIR$/incdeclibrary/incdeclibrary.iml" filepath="$PROJECT_DIR$/incdeclibrary/incdeclibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/morphbutton/morphbutton.iml" filepath="$PROJECT_DIR$/morphbutton/morphbutton.iml" />
       <module fileurl="file://$PROJECT_DIR$/recycleviewpager/recycleviewpager.iml" filepath="$PROJECT_DIR$/recycleviewpager/recycleviewpager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spellingc.iml" filepath="$PROJECT_DIR$/spellingc.iml" />
       <module fileurl="file://$PROJECT_DIR$/splash/splash.iml" filepath="$PROJECT_DIR$/splash/splash.iml" />
       <module fileurl="file://$PROJECT_DIR$/vusikview/vusikview.iml" filepath="$PROJECT_DIR$/vusikview/vusikview.iml" />
     </modules>

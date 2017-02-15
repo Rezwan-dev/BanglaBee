@@ -1,12 +1,16 @@
 package com.example.rezwan.spellingc;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.dd.morphingbutton.MorphingButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +31,12 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     private int mCurrentItemId = 0;
 
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
-       // public final TextView title;
+        private MorphingButton morph;
+        // public final TextView title;
 
         public SimpleViewHolder(View view) {
             super(view);
+            morph = (MorphingButton)view.findViewById(R.id.morph);
           //  title = (TextView) view.findViewById(R.id.title);
         }
     }
@@ -67,14 +73,34 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     }
 
     @Override
-    public void onBindViewHolder(SimpleViewHolder holder, final int position) {
-        //holder.title.setText(mItems.get(position).toString());
-
-        final View itemView = holder.itemView;
-        itemView.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(final SimpleViewHolder holder, final int position) {
+        holder.morph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, ""+position, Toast.LENGTH_SHORT).show();
+                v.setOnClickListener(null);
+                Resources r = v.getContext().getResources();
+                int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, r.getDisplayMetrics());
+                if(position/2 == 0) {
+                    MorphingButton.Params circle = MorphingButton.Params.create()
+                            .duration(500)
+                            .cornerRadius(px) // 56 dp
+                            .width(px) // 56 dp
+                            .height(px) // 56 dp
+                            .color(r.getColor(R.color.green)) // normal state color
+                            .colorPressed(r.getColor(R.color.green)) // pressed state color
+                            .icon(R.drawable.correct); // icon
+                    holder.morph.morph(circle);
+                }else{
+                    MorphingButton.Params circle = MorphingButton.Params.create()
+                            .duration(500)
+                            .cornerRadius(px) // 56 dp
+                            .width(px) // 56 dp
+                            .height(px) // 56 dp
+                            .color(r.getColor(R.color.red)) // normal state color
+                            .colorPressed(r.getColor(R.color.red)) // pressed state color
+                            .icon(R.drawable.wrong); // icon
+                    holder.morph.morph(circle);
+                }
             }
         });
         final int itemId = mItems.get(position);
