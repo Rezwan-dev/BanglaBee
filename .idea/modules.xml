@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/explosionfield/explosionfield.iml" filepath="$PROJECT_DIR$/explosionfield/explosionfield.iml" />
+      <module fileurl="file://$PROJECT_DIR$/database/database.iml" filepath="$PROJECT_DIR$/database/database.iml" />
       <module fileurl="file://$PROJECT_DIR$/explosionfield/explosionfield.iml" filepath="$PROJECT_DIR$/explosionfield/explosionfield.iml" />
       <module fileurl="file://$PROJECT_DIR$/gif/gif.iml" filepath="$PROJECT_DIR$/gif/gif.iml" />
       <module fileurl="file://$PROJECT_DIR$/incdeclibrary/incdeclibrary.iml" filepath="$PROJECT_DIR$/incdeclibrary/incdeclibrary.iml" />

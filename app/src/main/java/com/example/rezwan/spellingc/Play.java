@@ -1,21 +1,26 @@
 package com.example.rezwan.spellingc;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cunoraz.gifview.library.GifView;
+import com.example.mashroor.databasemanagement.DataFetcer;
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 
 public class Play extends AppCompatActivity {
 
     private GifView gifView1;
-    private TextView question_1;
+    private TextView question_1, question_2;
     private Handler handler;
+    private LayoutAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,7 @@ public class Play extends AppCompatActivity {
         setContentView(R.layout.activity_play);
         gifView1 = (GifView)findViewById(R.id.gif);
         question_1  = (TextView)findViewById(R.id.question_1);
+        question_2  = (TextView)findViewById(R.id.question_2);
         RecyclerViewPager mRecyclerView = (RecyclerViewPager) findViewById(R.id.rvp);
         handler =  new Handler();
         LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,
@@ -30,15 +36,32 @@ public class Play extends AppCompatActivity {
         mRecyclerView.setTriggerOffset(0.15f);
         mRecyclerView.setFlingFactor(0.25f);
         mRecyclerView.setLayoutManager(layout);
-        mRecyclerView.setAdapter(new LayoutAdapter(this, mRecyclerView));
+        SharedPreferences sharedPref = getSharedPreferences("spellingC", Context.MODE_PRIVATE);
+        int dificulty = sharedPref.getInt("dificulty", 1);
+        int quizSize = sharedPref.getInt("quizSize", 5);
+        question_2.setText("Score: 0/"+(quizSize*dificulty));
+        adapter  = new LayoutAdapter(this, mRecyclerView,new DataFetcer(this).fetchData(quizSize,dificulty), (ImageView)findViewById(R.id.playSbtn));
+        adapter.setOnScoreUpdate(new LayoutAdapter.OnScoreUpdate() {
+            @Override
+            public void updateScore(String score) {
+                question_2.setText(score);
+            }
+
+            @Override
+            public void onGameEnd(String score) {
+                Congrats.getInstance(score).show(getSupportFragmentManager(), "dialog");
+            }
+        });
+        mRecyclerView.setAdapter(adapter);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLongClickable(true);
         mRecyclerView.addOnPageChangedListener(new RecyclerViewPager.OnPageChangedListener() {
             @Override
             public void OnPageChanged(int oldPosition, int newPosition) {
-                question_1.setText("Question: "+(1+newPosition)+"/15");
+                question_1.setText("Question: "+(1+newPosition)+"/"+adapter.getItemCount());
             }
         });
+        question_1.setText("Question: "+1+"/"+quizSize);
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int scrollState) {

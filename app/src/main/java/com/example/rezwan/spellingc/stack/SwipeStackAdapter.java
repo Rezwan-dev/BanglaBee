@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.mashroor.databasemanagement.WordModel;
 import com.example.rezwan.spellingc.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,9 +20,9 @@ import java.util.List;
 public class SwipeStackAdapter extends BaseAdapter {
 
     private final LayoutInflater mInflater;
-    private List<String> mData;
+    private ArrayList<WordModel> mData;
 
-    public SwipeStackAdapter(List<String> data, Context context) {
+    public SwipeStackAdapter(ArrayList<WordModel> data, Context context) {
         mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -31,7 +33,7 @@ public class SwipeStackAdapter extends BaseAdapter {
     }
 
     @Override
-    public String getItem(int position) {
+    public WordModel getItem(int position) {
         return mData.get(position);
     }
 
@@ -47,7 +49,20 @@ public class SwipeStackAdapter extends BaseAdapter {
         }
 
         TextView textViewCard = (TextView) convertView.findViewById(R.id.textViewCard);
-        textViewCard.setText(mData.get(position));
+        textViewCard.setText(mData.get(position).getWord());
+
+        TextView textViewCard2 = (TextView) convertView.findViewById(R.id.bn_pos);
+        textViewCard2.setText(mData.get(position).getBanglaPOS());
+
+        TextView textViewCard3 = (TextView) convertView.findViewById(R.id.en_pos);
+        textViewCard3.setText(mData.get(position).getEnglishPOS());
+
+        TextView textViewCard4 = (TextView) convertView.findViewById(R.id.bn_syn);
+        textViewCard4.setText(mData.get(position).getBanglaDefination());
+
+        TextView textViewCard5 = (TextView) convertView.findViewById(R.id.en_syn);
+        textViewCard5.setText(mData.get(position).getEnglishDefination());
+
 
         return convertView;
     }

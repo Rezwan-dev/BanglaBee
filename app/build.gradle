@@ -38,4 +38,5 @@ dependencies {
     compile project(':morphbutton')
     compile project(':splash')
     compile project(':explosionfield')
+    compile project(':database')
 }

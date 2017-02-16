@@ -1,13 +1,17 @@
 package com.example.rezwan.spellingc;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.cunoraz.gifview.library.GifView;
+import com.example.mashroor.databasemanagement.DataFetcer;
 import com.example.rezwan.spellingc.stack.SwipeStack;
 import com.example.rezwan.spellingc.stack.SwipeStackAdapter;
 
@@ -25,8 +29,11 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study);
         mSwipeStack = (SwipeStack) findViewById(R.id.swipeStack);
-        fillWithTestData();
-        mAdapter = new SwipeStackAdapter(mData, this);
+        SharedPreferences sharedPref = getSharedPreferences("spellingC", Context.MODE_PRIVATE);
+        int dificulty = sharedPref.getInt("dificulty", 1);
+        int quizSize = sharedPref.getInt("quizSize", 5);
+       // fillWithTestData();
+        mAdapter = new SwipeStackAdapter(new DataFetcer(this).fetchData(quizSize,dificulty), this);
         mSwipeStack.setAdapter(mAdapter);
         gifView1 = (GifView)findViewById(R.id.gif);
         mSwipeStack.setListener(this);
@@ -51,6 +58,6 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
 
     @Override
     public void onStackEmpty() {
-
+        Toast.makeText(this,"Great Work", Toast.LENGTH_LONG).show();
     }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SpellingC</string>
     <string name="title_activity_study">Study</string>
+    <string name="team_mail"><u>mailtobanglabee@gmail.com</u></string>
 </resources>

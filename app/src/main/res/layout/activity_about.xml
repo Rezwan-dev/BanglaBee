@@ -63,14 +63,7 @@
                         android:src="@drawable/pro_pic_4_old" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Oiteijho"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:textStyle="normal|bold"
-                    android:textAlignment="center" />
+
             </LinearLayout>
 
 
@@ -90,14 +83,6 @@
                         android:src="@drawable/pro_pic_4_old" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mashroor"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:textStyle="normal|bold"
-                    android:textAlignment="center" />
             </LinearLayout>
 
 
@@ -124,14 +109,6 @@
                         android:src="@drawable/pro_pic_4_old" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sharif"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:textStyle="normal|bold"
-                    android:textAlignment="center" />
             </LinearLayout>
 
             <LinearLayout
@@ -150,21 +127,22 @@
                         android:src="@drawable/pro_pic_4_old" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rezwan"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:textStyle="normal|bold"
-                    android:textAlignment="center" />
             </LinearLayout>
 
         </LinearLayout>
 
 
 
-
+        <TextView
+            android:id="@+id/mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/team_mail"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_marginTop="32dp"
+            android:textStyle="normal|italic" />
 
     </LinearLayout>
 

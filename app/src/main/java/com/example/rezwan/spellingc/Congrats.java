@@ -1,6 +1,7 @@
 package com.example.rezwan.spellingc;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import tyrantgit.explosionfield.ExplosionField;
 
@@ -18,12 +20,19 @@ import tyrantgit.explosionfield.ExplosionField;
 
 public class Congrats extends DialogFragment {
 
+
+
     private View v;
+    private static String score;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(STYLE_NO_TITLE, R.style.MyDialog);
+    }
+    public static Congrats getInstance(String score){
+        Congrats.score = score;
+        return new Congrats();
     }
 
     @Override
@@ -37,6 +46,9 @@ public class Congrats extends DialogFragment {
                 dismiss();
             }
         });
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("spellingC",Context.MODE_PRIVATE);
+        ((TextView)v.findViewById(R.id.name_tv_congrats)).setText(sharedPref.getString("name", "Player One"));
+        ((TextView)v.findViewById(R.id.scoreTv)).setText(score);
         return v;
     }
 

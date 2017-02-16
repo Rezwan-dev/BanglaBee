@@ -45,6 +45,31 @@
 
 
         <TextView
+            android:id="@+id/bn_pos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bæ/bae is a Danish word for poop. Also used by people on the internet who think it means baby, sweetie etc."
+            android:textSize="18sp"
+            android:textColor="#426A5A"
+            android:textStyle="bold|italic" />
+        <TextView
+            android:id="@+id/en_pos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bæ/bae is a Danish word for poop. Also used by people on the internet who think it means baby, sweetie etc."
+            android:textSize="18sp"
+            android:textColor="#426A5A"
+            android:textStyle="bold|italic" />
+        <TextView
+            android:id="@+id/bn_syn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bæ/bae is a Danish word for poop. Also used by people on the internet who think it means baby, sweetie etc."
+            android:textSize="18sp"
+            android:textColor="#426A5A"
+            android:textStyle="bold|italic" />
+        <TextView
+            android:id="@+id/en_syn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bæ/bae is a Danish word for poop. Also used by people on the internet who think it means baby, sweetie etc."

@@ -1,6 +1,8 @@
 package com.example.rezwan.spellingc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -88,12 +90,12 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        findViewById(R.id.testFrag).setOnClickListener(new View.OnClickListener() {
+       /* findViewById(R.id.testFrag).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Congrats newFragment = new  Congrats();
                 newFragment.show(getSupportFragmentManager(), "dialog");
             }
-        });
+        });*/
     }
 }

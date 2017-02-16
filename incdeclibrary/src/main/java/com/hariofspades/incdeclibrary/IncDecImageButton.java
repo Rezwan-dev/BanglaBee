@@ -297,6 +297,7 @@ public class IncDecImageButton extends RelativeLayout {
     public void setArrayValue(int index){
         try {
             this.startIndex = index;
+            this.index  = index;
             counter.setText(array.get(startIndex));
         }catch (Exception e){
             e.printStackTrace();
