@@ -19,11 +19,7 @@ import com.example.mashroor.databasemanagement.WordModel;
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import static android.R.attr.background;
-import static android.R.attr.cacheColorHint;
-import static android.R.attr.id;
 
 /**
  * Created by rezwan on 2/7/17.
@@ -100,26 +96,36 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                 holder.morph.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        holder.morph.setOnClickListener(null);
+
                         String word = holder.editTv.getText().toString().trim();
+
+                        if(word.length() < 1 ){
+                            return;
+                        }
+                        holder.morph.setOnClickListener(null);
+                        holder.editTv.setEnabled(false);
                         answerCounter++;
+                        items.get(position).setWordInput(word);
                         Log.e("tggy", word + " " + items.get(position).getWord());
 
                         if (word.equals(items.get(position).getWord())) {
-                            items.get(position).setStatus(-1);
+                            items.get(position).setStatus(1);
                             MorphingButton.Params circle = MorphingButton.Params.create()
                                     .duration(500)
                                     .cornerRadius(px) // 56 dp
                                     .width(px) // 56 dp
                                     .height(px) // 56 dp
+                                    .text("")
                                     .color(r.getColor(R.color.green)) // normal state color
                                     .colorPressed(r.getColor(R.color.green)) // pressed state color
                                     .icon(R.drawable.correct); // icon
                             holder.morph.morph(circle);
                             score++;
                         } else {
+                            items.get(position).setStatus(2);
                             MorphingButton.Params circle = MorphingButton.Params.create()
                                     .duration(500)
+                                    .text("")
                                     .cornerRadius(px) // 56 dp
                                     .width(px) // 56 dp
                                     .height(px) // 56 dp
@@ -131,13 +137,27 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                         fireListener();
                     }
                 });
+                MorphingButton.Params square = MorphingButton.Params.create()
+                        .duration(0)
+                        .cornerRadius(dpTopx(2))
+                        .width(dpTopx(72))
+                        .height(dpTopx(42))
+                        .icon(0)
+                        .color(r.getColor(R.color.mb_blue))
+                        .colorPressed(r.getColor(R.color.mb_blue_dark))
+                        .text("Submit");
+                holder.morph.morph(square);
+                holder.editTv.setEnabled(true);
+                holder.editTv.setText("");
                 break;
             }
             case 2: {
                 holder.editTv.setEnabled(false);
                 holder.morph.setOnClickListener(null);
+                holder.editTv.setText(items.get(position).getWordInput());
                 MorphingButton.Params circle = MorphingButton.Params.create()
                         .duration(0)
+                        .text("")
                         .cornerRadius(px) // 56 dp
                         .width(px) // 56 dp
                         .height(px) // 56 dp
@@ -150,11 +170,13 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
             case 1: {
                 holder.editTv.setEnabled(false);
                 holder.morph.setOnClickListener(null);
+                holder.editTv.setText(items.get(position).getWordInput());
                 MorphingButton.Params circle = MorphingButton.Params.create()
                         .duration(0)
                         .cornerRadius(px) // 56 dp
                         .width(px) // 56 dp
                         .height(px) // 56 dp
+                        .text("")
                         .color(r.getColor(R.color.green)) // normal state color
                         .colorPressed(r.getColor(R.color.green)) // pressed state color
                         .icon(R.drawable.correct); // icon
@@ -166,7 +188,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("Taggy", "" + position);
+                Log.e("Taggy", "" + items.get(mRecyclerView.getCurrentPosition()).getAudioFileName()+" "+items.get(mRecyclerView.getCurrentPosition()).getWord());
                 try{
                     playAudio(items.get(mRecyclerView.getCurrentPosition()).getAudioFileName());
                 }
@@ -219,5 +241,10 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     public interface OnScoreUpdate {
         void updateScore(String score);
         void onGameEnd(String score);
+    }
+
+    public int dpTopx(int dp){
+        Resources r = mContext.getResources();
+        return  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 }

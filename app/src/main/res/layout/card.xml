@@ -32,9 +32,10 @@
                 android:id="@+id/textViewCard"
                 android:textSize="32sp"
                 android:textColor="#7FB685"
-                android:textStyle="bold|italic" />
+                android:textStyle="bold" />
 
             <ImageView
+                android:id="@+id/playBtn"
                 android:padding="8dp"
                 android:layout_width="48dp"
                 android:layout_height="48dp"

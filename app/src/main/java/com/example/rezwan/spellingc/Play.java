@@ -41,6 +41,7 @@ public class Play extends AppCompatActivity {
         int quizSize = sharedPref.getInt("quizSize", 5);
         question_2.setText("Score: 0/"+(quizSize*dificulty));
         adapter  = new LayoutAdapter(this, mRecyclerView,new DataFetcer(this).fetchData(quizSize,dificulty), (ImageView)findViewById(R.id.playSbtn));
+//        adapter  = new LayoutAdapter(this, mRecyclerView,new DataFetcer(this).fetchData(99,dificulty), (ImageView)findViewById(R.id.playSbtn));
         adapter.setOnScoreUpdate(new LayoutAdapter.OnScoreUpdate() {
             @Override
             public void updateScore(String score) {

@@ -35,12 +35,11 @@
                 android:background="@color/toolbar"
                 android:hint=""
                 android:textColor="#7FB685"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textSize="32sp" />
 
             <com.dd.morphingbutton.MorphingButton
                 android:id="@+id/morph"
-                android:layout_width="wrap_content"
+                android:layout_width="78dp"
                 android:layout_height="42dp"
                 android:background="@color/blue"
                 android:text="Submit"

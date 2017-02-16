@@ -1,6 +1,8 @@
 package com.example.rezwan.spellingc.stack;
 
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +23,12 @@ public class SwipeStackAdapter extends BaseAdapter {
 
     private final LayoutInflater mInflater;
     private ArrayList<WordModel> mData;
+    private Context context;
 
     public SwipeStackAdapter(ArrayList<WordModel> data, Context context) {
         mInflater = LayoutInflater.from(context);
         this.mData = data;
+        this.context = context;
     }
 
     @Override
@@ -62,8 +66,34 @@ public class SwipeStackAdapter extends BaseAdapter {
 
         TextView textViewCard5 = (TextView) convertView.findViewById(R.id.en_syn);
         textViewCard5.setText(mData.get(position).getEnglishDefination());
-
+        convertView.findViewById(R.id.playBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String audioFileName = mData.get(position).getAudioFileName();
+                Log.e("taggy", audioFileName);
+                audioFileName = audioFileName.replace(".mp3", "");
+//        audioFileName = audioFileName.replace(".", "");
+                int resId = getResourceId(audioFileName, "raw", context.getPackageName());
+                if( resId > 0) {
+                    MediaPlayer mPlayer = MediaPlayer.create(context, resId);
+                    mPlayer.start();
+                }
+                else{
+                    Log.e("taggy", "PlayAudio : media file not found: " + audioFileName + " resId: " + resId);
+                }
+            }
+        });
 
         return convertView;
     }
+
+    public int getResourceId(String pVariableName, String pResourcename, String pPackageName) {
+        try {
+            return context.getResources().getIdentifier(pVariableName, pResourcename, pPackageName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
 }

@@ -131,6 +131,7 @@ public class MorphingButton extends Button {
             setIcon(params.icon);
         } else if(params.text != null) {
             setText(params.text);
+            setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         }
 
         if (params.animationListener != null) {

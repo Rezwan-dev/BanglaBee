@@ -12,6 +12,16 @@ public class WordModel {
     int id = 0;
     String word = "";
 
+    public String getWordInput() {
+        return wordInput;
+    }
+
+    public void setWordInput(String wordInput) {
+        this.wordInput = wordInput;
+    }
+
+    String wordInput = "";
+
     public int getId() {
         return id;
     }
