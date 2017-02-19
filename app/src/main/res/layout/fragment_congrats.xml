@@ -33,6 +33,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/congrats_bg"/>
+
 
                 <ImageView
                     android:id="@+id/afterExplode"
@@ -177,6 +182,7 @@
                         android:textStyle="normal|bold" />
 
                     <TextView
+                        android:id="@+id/ttlc"
                         android:layout_marginBottom="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

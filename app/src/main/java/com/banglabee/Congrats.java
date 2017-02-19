@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -112,6 +113,9 @@ public class Congrats extends DialogFragment {
                 shareBitmap(bm,"share");
             }
         });
+        Typeface myTypeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/sweet_sensations.ttf");
+        TextView myTextView = (TextView)v.findViewById(R.id.ttlc);
+        myTextView.setTypeface(myTypeface);
         View reveal = v.findViewById(R.id.reveal);
         reveal.setVisibility(View.VISIBLE);
         reveal.animate().alpha(1.0f).setDuration(600);
