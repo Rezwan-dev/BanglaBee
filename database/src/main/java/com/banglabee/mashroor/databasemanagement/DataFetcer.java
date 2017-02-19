@@ -94,6 +94,53 @@ public class DataFetcer {
            //Log.e("SB", "query time:" + (time2-time1) + " word model populate time:" + (time3-time2));
         }
 
+        db.close();
         return wordList;
+    }
+
+
+    public WordModel fetchSingleData(int id, int difficulty) {
+        Cursor cursor;
+
+        String difficultyStr = "easy";
+
+        if (difficulty == Constants.easy) {
+            difficultyStr = "easy";
+        }
+        else if (difficulty == Constants.medium) {
+            difficultyStr = "medium";
+        }
+        else if (difficulty == Constants.hard) {
+            difficultyStr = "hard";
+        }
+
+        DatabaseHelper db;
+
+        db = new DatabaseHelper(context);
+        try {
+            db.createDataBase();
+            db.openDataBase();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        SQLiteDatabase sd = db.getReadableDatabase();
+
+        cursor = sd.query(difficultyStr, null, "SL = " + id, null, null, null, null);
+        cursor.moveToFirst();
+
+        WordModel wordModel = new WordModel(id,
+                cursor.getString(cursor.getColumnIndex("BN_WORD")).trim(),
+                cursor.getString(cursor.getColumnIndex("BN_POS")),
+                cursor.getString(cursor.getColumnIndex("BN_SYN")),
+                cursor.getString(cursor.getColumnIndex("EN_POS")),
+                cursor.getString(cursor.getColumnIndex("EN_SYN")),
+                cursor.getString(cursor.getColumnIndex("AUDIO")),
+                cursor.getInt(cursor.getColumnIndex("WEIGHT")));
+
+        db.close();
+        return wordModel;
+
     }
 }
