@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.banglabee.mashroor.databasemanagement.WordModel;
 
@@ -58,7 +59,10 @@ public class bbDBHelper extends SQLiteOpenHelper {
         for(WordModel wordModel:items){
             jsonArray.put(wordModel.toJson());
             if(wordModel.getStatus() == WordModel.Wrong){
-                addWorng(wordModel.getId());
+                String id =  ""+wordModel.getId()+ ""+wordModel.getWeight();
+                int convertedID  =  Integer.parseInt(id);
+                Log.e("TAGGY", ""+convertedID);
+                addWorng(convertedID);
             }
         }
         SQLiteDatabase db = this.getWritableDatabase();
