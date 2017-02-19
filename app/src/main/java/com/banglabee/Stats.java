@@ -1,6 +1,7 @@
 package com.banglabee;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +46,14 @@ public class Stats extends AppCompatActivity {
                 for(Integer integer  : integers){
                     Log.e("TAGGY", ""+integer);
                 }
+            }
+        });
+        findViewById(R.id.studyWrong).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  =  new Intent(Stats.this, Study.class);
+                intent.putExtra(Study.isStudy,true);
+                startActivity(intent);
             }
         });
     }

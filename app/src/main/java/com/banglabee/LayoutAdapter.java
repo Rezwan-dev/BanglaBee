@@ -51,7 +51,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
 
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
         private MorphingButton morph;
-        private TextView textViewCard2, textViewCard3, textViewCard4, textViewCard5;
+        private TextView textViewCard2, textViewCard3, textViewCard4, textViewCard5,rightTV;
         EditText editTv;
         // public final TextView title;
 
@@ -62,6 +62,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
             textViewCard3 = (TextView) view.findViewById(R.id.en_pos);
             textViewCard4 = (TextView) view.findViewById(R.id.bn_syn);
             textViewCard5 = (TextView) view.findViewById(R.id.en_syn);
+            rightTV  = (TextView)view.findViewById(R.id.rightTV);
             editTv = (EditText) view.findViewById(R.id.editTv);
             //  title = (TextView) view.findViewById(R.id.title);
         }
@@ -142,6 +143,8 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                                     .colorPressed(r.getColor(R.color.red)) // pressed state color
                                     .icon(R.drawable.wrong); // icon
                             holder.morph.morph(circle);
+                            holder.rightTV.setVisibility(View.VISIBLE);
+                            holder.rightTV.setText(items.get(position).getWord());
                         }
                         fireListener();
                     }
@@ -158,6 +161,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                 holder.morph.morph(square);
                 holder.editTv.setEnabled(true);
                 holder.editTv.setText("");
+                holder.rightTV.setVisibility(View.INVISIBLE);
                 break;
             }
             case 2: {
@@ -174,6 +178,8 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                         .colorPressed(r.getColor(R.color.red)) // pressed state color
                         .icon(R.drawable.wrong); // icon
                 holder.morph.morph(circle);
+                holder.rightTV.setVisibility(View.VISIBLE);
+                holder.rightTV.setText(items.get(position).getWord());
                 break;
             }
             case 1: {
@@ -190,6 +196,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                         .colorPressed(r.getColor(R.color.green)) // pressed state color
                         .icon(R.drawable.correct); // icon
                 holder.morph.morph(circle);
+                holder.rightTV.setVisibility(View.GONE);
                 break;
             }
 
