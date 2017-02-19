@@ -1,19 +1,15 @@
-package com.example.rezwan.spellingc;
+package com.banglabee;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Toast;
 
 import com.cunoraz.gifview.library.GifView;
-import com.example.mashroor.databasemanagement.DataFetcer;
-import com.example.rezwan.spellingc.stack.SwipeStack;
-import com.example.rezwan.spellingc.stack.SwipeStackAdapter;
+import com.banglabee.mashroor.databasemanagement.DataFetcer;
+import com.banglabee.stack.SwipeStack;
+import com.banglabee.stack.SwipeStackAdapter;
 
 import java.util.ArrayList;
 

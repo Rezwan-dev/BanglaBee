@@ -33,11 +33,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-        <com.example.rezwan.spellingc.RoundedImage
+        <com.banglabee.RoundedImage
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:src="@drawable/pro_pic_4_old" />
@@ -74,6 +76,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp" />
                     <TextView
+                        android:id="@+id/highestScore"
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         android:text="72"
@@ -108,6 +111,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp" />
                     <TextView
+                        android:id="@+id/rightCount"
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         android:text="46"
@@ -140,6 +144,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp" />
                     <TextView
+                        android:id="@+id/wrongCount"
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         android:text="13"
@@ -191,6 +196,7 @@
                 android:orientation="vertical"
                 android:gravity="center">
                 <RelativeLayout
+                    android:id="@+id/historyBtn"
                     android:layout_width="100dp"
                     android:layout_height="100dp">
                     <ImageView

@@ -19,4 +19,5 @@
     <color name="cardColor1">#A1C181</color>
     <color name="toolbar">#17000000</color>
     <color name="test0">#2D3047</color>
+    <color name="congrats_bg">#2D3047</color>
 </resources>

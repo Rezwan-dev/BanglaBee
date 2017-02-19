@@ -1,4 +1,4 @@
-package com.example.rezwan.spellingc;
+package com.banglabee;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,8 +11,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.cunoraz.gifview.library.GifView;
-import com.example.mashroor.databasemanagement.DataFetcer;
+import com.banglabee.mashroor.databasemanagement.DataFetcer;
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 
 public class Play extends AppCompatActivity {

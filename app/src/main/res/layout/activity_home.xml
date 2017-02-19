@@ -27,8 +27,8 @@
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello"
-            android:textSize="52sp"
+            android:text="BanglaBee"
+            android:textSize="50sp"
             android:textColor="@android:color/white"
             android:layout_marginBottom="24dp"/>
     </RelativeLayout>

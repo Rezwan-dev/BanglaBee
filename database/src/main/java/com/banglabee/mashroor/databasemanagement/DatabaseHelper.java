@@ -1,4 +1,4 @@
-package com.example.mashroor.databasemanagement;
+package com.banglabee.mashroor.databasemanagement;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

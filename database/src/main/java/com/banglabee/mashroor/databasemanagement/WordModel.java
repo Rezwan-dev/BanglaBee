@@ -1,4 +1,7 @@
-package com.example.mashroor.databasemanagement;
+package com.banglabee.mashroor.databasemanagement;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by mashroor on 10-Feb-17.
@@ -71,7 +74,7 @@ public class WordModel {
 
     int status = -1;
 
-    WordModel()
+    public WordModel()
     {
 
     }
@@ -81,12 +84,14 @@ public class WordModel {
         return "WordModel{" +
                 "id=" + id +
                 ", word='" + word + '\'' +
+                ", wordInput='" + wordInput + '\'' +
                 ", banglaPOS='" + banglaPOS + '\'' +
                 ", banglaDefination='" + banglaDefination + '\'' +
                 ", englishPOS='" + englishPOS + '\'' +
                 ", englishDefination='" + englishDefination + '\'' +
                 ", weight=" + weight +
                 ", audioFileName='" + audioFileName + '\'' +
+                ", status=" + status +
                 '}';
     }
 
@@ -107,6 +112,46 @@ public class WordModel {
         this.englishDefination = englishDefination;
         this.audioFileName = audioFileName;
         this.weight = weight;
+    }
+
+    public String toJson(){
+        JSONObject jsonObject= new JSONObject();
+        try {
+            jsonObject.put("id", getId());
+            jsonObject.put("word", getWord());
+            jsonObject.put("banglaPOS", getBanglaPOS());
+            jsonObject.put("banglaDefination", getBanglaDefination());
+            jsonObject.put("englishPOS", getEnglishPOS());
+            jsonObject.put("englishDefination", getEnglishDefination());
+            jsonObject.put("audioFileName", getAudioFileName());
+            jsonObject.put("weight", getWeight());
+            jsonObject.put("wordInput", getWordInput());
+            jsonObject.put("status", getStatus());
+
+            return jsonObject.toString();
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    public void JsontoObject(JSONObject object){
+        try {
+            id = object.getInt("id");
+            word = object.getString("word");
+            banglaPOS  = object.getString("banglaPOS");
+            banglaDefination = object.getString("banglaDefination");
+            englishPOS = object.getString("englishPOS");
+            englishDefination = object.getString("englishDefination");
+            audioFileName = object.getString("audioFileName");
+            weight = object.getInt("weight");
+            wordInput = object.getString("wordInput");
+            status = object.getInt("status");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 

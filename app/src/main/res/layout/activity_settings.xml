@@ -36,7 +36,8 @@
         android:orientation="vertical"
         android:layout_centerInParent="true">
 
-        <com.example.rezwan.spellingc.RoundedImage
+        <com.banglabee.RoundedImage
+            android:id="@+id/profile_pic"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:src="@drawable/pro_pic_4_old" />
@@ -138,6 +139,13 @@
             android:layout_height="wrap_content"
             android:text="About Us"
             android:background="@drawable/circle_bg"/>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp" />
 
 
     </LinearLayout>

@@ -58,7 +58,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:gravity="center">
-                    <com.example.rezwan.spellingc.RoundedImage
+                    <com.banglabee.RoundedImage
                         android:layout_width="86dp"
                         android:layout_height="86dp"
                         android:src="@drawable/rezwan"
@@ -81,7 +81,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:gravity="center">
-                    <com.example.rezwan.spellingc.RoundedImage
+                    <com.banglabee.RoundedImage
                         android:layout_width="86dp"
                         android:layout_height="86dp"
                         android:src="@drawable/anik"
@@ -109,7 +109,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:gravity="center">
-                    <com.example.rezwan.spellingc.RoundedImage
+                    <com.banglabee.RoundedImage
                         android:layout_width="86dp"
                         android:layout_height="86dp"
                         android:src="@drawable/sharif"
@@ -129,7 +129,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:gravity="center">
-                    <com.example.rezwan.spellingc.RoundedImage
+                    <com.banglabee.RoundedImage
                         android:layout_width="86dp"
                         android:layout_height="86dp"
                         android:src="@drawable/oitejjo"

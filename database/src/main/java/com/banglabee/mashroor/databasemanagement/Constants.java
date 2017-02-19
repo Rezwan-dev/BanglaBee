@@ -1,4 +1,4 @@
-package com.example.mashroor.databasemanagement;
+package com.banglabee.mashroor.databasemanagement;
 
 /**
  * Created by mashroor on 15-Feb-17.

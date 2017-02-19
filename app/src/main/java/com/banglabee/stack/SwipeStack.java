@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.rezwan.spellingc.stack;
+package com.banglabee.stack;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -30,7 +30,7 @@ import android.widget.Adapter;
 import android.widget.FrameLayout;
 
 
-import com.example.rezwan.spellingc.R;
+import com.banglabee.R;
 
 import java.util.Random;
 

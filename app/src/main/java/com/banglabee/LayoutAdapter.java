@@ -1,8 +1,10 @@
-package com.example.rezwan.spellingc;
+package com.banglabee;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
@@ -12,10 +14,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dd.morphingbutton.MorphingButton;
-import com.example.mashroor.databasemanagement.WordModel;
+import com.banglabee.mashroor.databasemanagement.WordModel;
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 
 import java.util.ArrayList;
@@ -37,6 +38,10 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     private int answerCounter;
     private int score;
     private OnScoreUpdate onScoreUpdate;
+    private int rightCount;
+    private int highestScore;
+    private int wrongCount;
+    private int weightScore;
 
 
     public void setOnScoreUpdate(LayoutAdapter.OnScoreUpdate onScoreUpdate) {
@@ -68,6 +73,10 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
         mRecyclerView = recyclerView;
         this.items = items;
         this.playBtn = playBtn;
+        SharedPreferences sharedPref = context.getSharedPreferences("spellingC",Context.MODE_PRIVATE);
+        rightCount = sharedPref.getInt("rightCount", 0);
+        wrongCount  = sharedPref.getInt("wrongCount", 0);
+        highestScore = sharedPref.getInt("highestScore", 0);
     }
 
     public int getResourceId(String pVariableName, String pResourcename, String pPackageName) {
@@ -212,7 +221,9 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     private void fireListener() {
         if(onScoreUpdate != null){
             if(answerCounter == items.size()){
-                onScoreUpdate.onGameEnd("Score: "+(score*items.get(0).getWeight())+"/"+(items.size()*items.get(0).getWeight()));
+                weightScore  = (score*items.get(0).getWeight());
+                onScoreUpdate.onGameEnd("Score: "+weightScore+"/"+(items.size()*items.get(0).getWeight()));
+                new TestAsync().execute();
             }else{
                 onScoreUpdate.updateScore("Score: "+(score*items.get(0).getWeight())+"/"+(items.size()*items.get(0).getWeight()));
             }
@@ -246,5 +257,24 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     public int dpTopx(int dp){
         Resources r = mContext.getResources();
         return  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
+    }
+
+    class TestAsync extends AsyncTask<String, String, String>
+    {
+
+        @Override
+        protected String doInBackground(String... params) {
+            SharedPreferences sharedPref = mContext.getSharedPreferences("spellingC", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("rightCount", rightCount+score);
+            editor.putInt("wrongCount", wrongCount+(items.size()-score));
+            if(weightScore > highestScore){
+                editor.putInt("highestScore", weightScore);
+            }
+            editor.apply();
+            bbDBHelper bbDBHelper = new bbDBHelper(mContext);
+            bbDBHelper.addHistory(items);
+            return null;
+        }
     }
 }

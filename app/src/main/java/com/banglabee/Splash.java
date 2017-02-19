@@ -1,8 +1,9 @@
-package com.example.rezwan.spellingc;
+package com.banglabee;
 
 
 import android.content.Intent;
 import android.os.Handler;
+
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
@@ -44,12 +45,12 @@ public class Splash extends AwesomeSplash {
 
 
         //Customize Title
-        configSplash.setTitleSplash("This is Sparta!!!");
+        configSplash.setTitleSplash(getString(R.string.tag));
         configSplash.setTitleTextColor(R.color.white);
-        configSplash.setTitleTextSize(36f); //float value
+        configSplash.setTitleTextSize(28f); //float value
         configSplash.setAnimTitleDuration(800);
         configSplash.setAnimTitleTechnique(Techniques.SlideInUp);
-        configSplash.setTitleFont("fonts/sweet_sensations.ttf"); //provide string to your font located in assets/fonts/
+        //configSplash.setTitleFont("fonts/sweet_sensations.ttf"); //provide string to your font located in assets/fonts/
 
 
     }

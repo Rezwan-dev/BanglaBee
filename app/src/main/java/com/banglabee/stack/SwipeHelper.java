@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.rezwan.spellingc.stack;
+package com.banglabee.stack;
 
 import android.animation.Animator;
 import android.view.MotionEvent;

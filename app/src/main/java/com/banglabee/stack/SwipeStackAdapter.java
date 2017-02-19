@@ -1,4 +1,4 @@
-package com.example.rezwan.spellingc.stack;
+package com.banglabee.stack;
 
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -9,11 +9,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.mashroor.databasemanagement.WordModel;
-import com.example.rezwan.spellingc.R;
+import com.banglabee.R;
+import com.banglabee.mashroor.databasemanagement.WordModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by rezwan on 2/5/17.
