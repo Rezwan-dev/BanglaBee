@@ -69,7 +69,7 @@ public class bbDBHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(HISTORY_ENTRY, jsonArray.toString());
-        db.insert(TABLE_HISTORY, null, values);
+        db.insertWithOnConflict(TABLE_HISTORY, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         db.close();
     }
 
