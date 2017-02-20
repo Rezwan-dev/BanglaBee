@@ -40,7 +40,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <com.banglabee.RoundedImage
+        <com.codestation.banglabee.RoundedImage
             android:id="@+id/pro_pic_stats"
             android:layout_width="86dp"
             android:layout_height="86dp"

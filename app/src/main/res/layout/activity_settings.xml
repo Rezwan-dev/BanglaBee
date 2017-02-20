@@ -36,7 +36,7 @@
         android:orientation="vertical"
         android:layout_centerInParent="true">
 
-        <com.banglabee.RoundedImage
+        <com.codestation.banglabee.RoundedImage
             android:id="@+id/profile_pic_s"
             android:layout_width="86dp"
             android:layout_height="86dp"
