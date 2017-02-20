@@ -2,11 +2,13 @@ package com.banglabee;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +24,8 @@ public class Play extends AppCompatActivity {
     private TextView question_1, question_2;
     private Handler handler;
     private LayoutAdapter adapter;
+    private MediaPlayer mPlayer;
+    private ImageView playSbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,7 @@ public class Play extends AppCompatActivity {
         gifView1 = (GifView)findViewById(R.id.gif);
         question_1  = (TextView)findViewById(R.id.question_1);
         question_2  = (TextView)findViewById(R.id.question_2);
-        RecyclerViewPager mRecyclerView = (RecyclerViewPager) findViewById(R.id.rvp);
+        final RecyclerViewPager mRecyclerView = (RecyclerViewPager) findViewById(R.id.rvp);
         handler =  new Handler();
         LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,
                 false);
@@ -41,7 +45,7 @@ public class Play extends AppCompatActivity {
         int dificulty = sharedPref.getInt("dificulty", 1);
         int quizSize = sharedPref.getInt("quizSize", 5);
         question_2.setText("Score: 0/"+(quizSize*dificulty));
-        adapter  = new LayoutAdapter(this, mRecyclerView,new DataFetcer(this).fetchData(quizSize,dificulty), (ImageView)findViewById(R.id.playSbtn));
+        adapter  = new LayoutAdapter(this, mRecyclerView,new DataFetcer(this).fetchData(quizSize,dificulty));
 //        adapter  = new LayoutAdapter(this, mRecyclerView,new DataFetcer(this).fetchData(99,dificulty), (ImageView)findViewById(R.id.playSbtn));
         adapter.setOnScoreUpdate(new LayoutAdapter.OnScoreUpdate() {
             @Override
@@ -99,7 +103,19 @@ public class Play extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.playSbtn).setOnClickListener(new View.OnClickListener() {
+        playSbtn = (ImageView)findViewById(R.id.playSbtn);
+        playSbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mPlayer == null || !mPlayer.isPlaying()) {
+                    playAudio(adapter.getCurrentAudioPath());
+                }else {
+                    stop();
+                }
+            }
+        });
+
+       /* findViewById(R.id.playSbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 handler.removeCallbacksAndMessages(null);
@@ -115,7 +131,55 @@ public class Play extends AppCompatActivity {
                     gifView1.pause();
                 }
             }
-        });
+        });*/
 
+    }
+
+    private void playAudio(String audioFileName) {
+        Log.e("taggy", audioFileName);
+        audioFileName = audioFileName.replace(".mp3", "");
+//        audioFileName = audioFileName.replace(".", "");
+        int resId = getResourceId(audioFileName, "raw", getPackageName());
+        if( resId > 0) {
+            play(resId);
+        }
+        else{
+            Log.e("taggy", "PlayAudio : media file not found: " + audioFileName + " resId: " + resId);
+        }
+    }
+
+    public int getResourceId(String pVariableName, String pResourcename, String pPackageName) {
+        try {
+            return getResources().getIdentifier(pVariableName, pResourcename, pPackageName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public void play(int id){
+        stop();
+        mPlayer = MediaPlayer.create(this, id);
+        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                stop();
+            }
+        });
+        if(!gifView1.isPlaying()) {
+            gifView1.play();
+        }
+        playSbtn.setImageDrawable(getResources().getDrawable(R.drawable.media_stop));
+        mPlayer.start();
+    }
+    public void stop(){
+        if (mPlayer != null) {
+            mPlayer.release();
+            mPlayer = null;
+        }
+        if(gifView1.isPlaying()) {
+            gifView1.pause();
+        }
+        playSbtn.setImageDrawable(getResources().getDrawable(R.drawable.media_play));
     }
 }

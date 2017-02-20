@@ -69,7 +69,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     }
 
 
-    public LayoutAdapter(Context context, RecyclerViewPager recyclerView, ArrayList<WordModel> items, ImageView playBtn) {
+    public LayoutAdapter(Context context, RecyclerViewPager recyclerView, ArrayList<WordModel> items) {
         mContext = context;
         mRecyclerView = recyclerView;
         this.items = items;
@@ -80,13 +80,11 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
         highestScore = sharedPref.getInt("highestScore", 0);
     }
 
-    public int getResourceId(String pVariableName, String pResourcename, String pPackageName) {
-        try {
-            return mContext.getResources().getIdentifier(pVariableName, pResourcename, pPackageName);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
+    public String getCurrentAudioPath(){
+        if(items.size() > 0){
+            return LayoutAdapter.this.items.get(mRecyclerView.getCurrentPosition()).getAudioFileName();
         }
+        return "";
     }
 
 
@@ -201,20 +199,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
             }
 
         }
-        playBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("Taggy", "" + items.get(mRecyclerView.getCurrentPosition()).getAudioFileName()+" "+items.get(mRecyclerView.getCurrentPosition()).getWord());
-                try{
-                    playAudio(items.get(mRecyclerView.getCurrentPosition()).getAudioFileName());
-                }
-                catch (Exception e)
-                {
-                    Log.e("taggy", "Play audio exception: " + e);
-                }
 
-            }
-        });
         holder.textViewCard2.setText(items.get(position).getBanglaPOS());
 
         holder.textViewCard3.setText(items.get(position).getEnglishPOS());
@@ -237,19 +222,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
         }
     }
 
-    private void playAudio(String audioFileName) {
-        Log.e("taggy", audioFileName);
-        audioFileName = audioFileName.replace(".mp3", "");
-//        audioFileName = audioFileName.replace(".", "");
-        int resId = getResourceId(audioFileName, "raw", mContext.getPackageName());
-        if( resId > 0) {
-            MediaPlayer mPlayer = MediaPlayer.create(mContext, resId);
-            mPlayer.start();
-        }
-        else{
-            Log.e("taggy", "PlayAudio : media file not found: " + audioFileName + " resId: " + resId);
-        }
-    }
+
 
     @Override
     public int getItemCount() {

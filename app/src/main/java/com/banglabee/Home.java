@@ -1,7 +1,12 @@
 package com.banglabee;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +16,11 @@ import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
 
-
 import dyanamitechetan.vusikview.VusikView;
 
 public class Home extends AppCompatActivity {
 
-    int []img = {R.id.img1,R.id.img2,R.id.img3,R.id.img4};
+    int[] img = {R.id.img1, R.id.img2, R.id.img3, R.id.img4};
     int a = 0;
 
     @Override
@@ -24,7 +28,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/sweet_sensations.ttf");
-        TextView myTextView = (TextView)findViewById(R.id.ttl);
+        TextView myTextView = (TextView) findViewById(R.id.ttl);
         myTextView.setTypeface(myTypeface);
         final Animation anim = new ScaleAnimation(
                 0f, 1f, // Start and end values for the X axis scaling
@@ -42,9 +46,11 @@ public class Home extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                if(a < 3){
+                if (a < 3) {
                     findViewById(img[a++]).clearAnimation();
                     findViewById(img[a]).startAnimation(anim);
+                } else {
+                    check();
                 }
             }
 
@@ -59,14 +65,14 @@ public class Home extends AppCompatActivity {
         findViewById(R.id.img2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(Home.this, Study.class);
+                Intent intent = new Intent(Home.this, Study.class);
                 startActivity(intent);
             }
         });
         findViewById(R.id.img3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(Home.this, Settings.class);
+                Intent intent = new Intent(Home.this, Settings.class);
                 startActivity(intent);
             }
         });
@@ -74,14 +80,14 @@ public class Home extends AppCompatActivity {
         findViewById(R.id.img1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(Home.this, Play.class);
+                Intent intent = new Intent(Home.this, Play.class);
                 startActivity(intent);
             }
         });
         findViewById(R.id.img4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(Home.this, Stats.class);
+                Intent intent = new Intent(Home.this, Stats.class);
                 startActivity(intent);
             }
         });
@@ -92,5 +98,28 @@ public class Home extends AppCompatActivity {
                 newFragment.show(getSupportFragmentManager(), "dialog");
             }
         });*/
+
+    }
+
+    private void check() {
+        SharedPreferences sharedPref = getSharedPreferences("spellingC", Context.MODE_PRIVATE);
+        if (sharedPref.getBoolean("firstLoad", true)) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean("firstLoad", false);
+            editor.apply();
+
+            AlertDialog alertDialog = new AlertDialog.Builder(Home.this).create();
+            alertDialog.setTitle("Requirement");
+            alertDialog.setMessage("This application requires Bangla Keyboard. Please switch to Unicode Bangla Keyboard or Please download one from PlayStore (eg. ridmik keyboard)");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+
+
+        }
     }
 }

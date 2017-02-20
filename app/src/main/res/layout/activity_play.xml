@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="24dp"
     android:background="@color/accent"
-    android:orientation="vertical"
-    tools:context="com.banglabee.rezwan.spellingc.com.banglabee.Play">
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -38,16 +37,24 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="1">
-
-            <ImageView
-                android:padding="16dp"
-                android:id="@+id/playSbtn"
-                android:scaleType="fitCenter"
+            android:layout_weight="1"
+            android:animateLayoutChanges="true">
+            <RelativeLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/media_play"/>
+                android:src="@drawable/media_play">
+                <ImageView
+                    android:background="@drawable/play_bg"
+                    android:padding="16dp"
+                    android:id="@+id/playSbtn"
+                    android:scaleType="fitCenter"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/media_play"/>
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/question_1"
                 android:padding="8dp"

@@ -60,7 +60,7 @@ public class Settings extends AppCompatActivity {
         dificulty = sharedPref.getInt("dificulty", 1);
         quizSize = sharedPref.getInt("quizSize", 5);
         String filePath = sharedPref.getString("saved", "");
-        profile_pic = (RoundedImage) findViewById(R.id.profile_pic);
+        profile_pic = (RoundedImage) findViewById(R.id.profile_pic_s);
         if (filePath.length() > 0) {
             File imgFile = new File(filePath);
             if (imgFile.exists()) {

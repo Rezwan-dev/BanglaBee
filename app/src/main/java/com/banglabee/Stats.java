@@ -3,6 +3,8 @@ package com.banglabee;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.banglabee.mashroor.databasemanagement.WordModel;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -56,5 +59,15 @@ public class Stats extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        String filePath = sharedPref.getString("saved", "");
+        RoundedImage profile_pic = (RoundedImage) findViewById(R.id.pro_pic_stats);
+        if (filePath.length() > 0) {
+            File imgFile = new File(filePath);
+            if (imgFile.exists()) {
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                profile_pic.setImageBitmap(myBitmap);
+
+            }
+        }
     }
 }

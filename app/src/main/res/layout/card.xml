@@ -34,11 +34,13 @@
                 android:textStyle="bold" />
 
             <ImageView
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/play_study"
                 android:id="@+id/playBtn"
                 android:padding="8dp"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/play_audio"/>
+                android:src="@drawable/media_play"/>
 
 
         </LinearLayout>
