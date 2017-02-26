@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,11 +76,17 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
                     searchLL.setLayoutParams(parms);
                     searchET.setVisibility(View.VISIBLE);
                     searchRV.setVisibility(View.VISIBLE);
+                    fillData();
                 }
             }
         });
 
 
+    }
+
+    private void fillData(){
+        searchRV.setLayoutManager(new LinearLayoutManager(this));
+        searchRV.setAdapter(new SearchAdapter(this, new ArrayList<WordModel>()));
     }
 
     private void fillWithStudyWrongData() {
