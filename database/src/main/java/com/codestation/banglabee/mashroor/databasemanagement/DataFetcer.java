@@ -2,6 +2,7 @@ package com.codestation.banglabee.mashroor.databasemanagement;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -142,5 +143,50 @@ public class DataFetcer {
         db.close();
         return wordModel;
 
+    }
+
+    public ArrayList<WordModel> fetchDataByParrern(String pattern)
+    {
+        Log.e("SB", "fetchDataByParrern called pattern: " + pattern);
+
+        Cursor cursor;
+        ArrayList<WordModel> wordList = new ArrayList<WordModel>();
+
+        DatabaseHelper db;
+        db = new DatabaseHelper(context);
+        try {
+            db.createDataBase();
+            db.openDataBase();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String result = new String();
+        SQLiteDatabase sd = db.getReadableDatabase();
+
+        cursor = sd.query("archive", null, "BN_WORD LIKE '%" + pattern.trim() +"%'", null, null, null, null);
+
+        Log.e("SB", "dump of cursor: "+ DatabaseUtils.dumpCursorToString(cursor));
+
+        while (cursor.moveToNext()){
+
+            Log.e("SB", "col count : " + cursor.getColumnCount() + " names: " + cursor.getColumnNames() + "           ------ " + cursor.getCount() + " Query: " + "BN_WORD LIKE '%" + pattern +"%'");
+
+            WordModel wordModel = new WordModel(cursor.getInt(cursor.getColumnIndex("SL")),
+                    cursor.getString(cursor.getColumnIndex("BN_WORD")).trim(),
+                    cursor.getString(cursor.getColumnIndex("BN_POS")),
+                    cursor.getString(cursor.getColumnIndex("BN_SYN")),
+                    cursor.getString(cursor.getColumnIndex("EN_POS")),
+                    cursor.getString(cursor.getColumnIndex("EN_SYN")),
+                    "",
+                    0);
+
+            wordList.add(wordModel);
+        }
+        cursor.close();
+        db.close();
+
+        return wordList;
     }
 }
