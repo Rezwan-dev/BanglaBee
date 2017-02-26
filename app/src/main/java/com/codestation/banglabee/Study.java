@@ -4,7 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
 
 import com.codestation.banglabee.mashroor.databasemanagement.DataFetcer;
 import com.codestation.banglabee.mashroor.databasemanagement.WordModel;
@@ -25,6 +31,9 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
     private GifView gifView1;
 
     public static final String isStudy  = "isStudy";
+    private LinearLayout searchLL;
+    private EditText searchET;
+    private ImageView searchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,28 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
             gifView1 = (GifView)findViewById(R.id.gif);
             mSwipeStack.setListener(this);
         }
+
+        searchLL  = (LinearLayout)findViewById(R.id.searchLL);
+        searchET  = (EditText)findViewById(R.id.searchET);
+        searchBtn = (ImageView)findViewById(R.id.searchBtn);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(searchET.getVisibility() == View.VISIBLE){
+                    ViewGroup.LayoutParams parms = searchLL.getLayoutParams();
+                    parms.width =  ViewGroup.LayoutParams.WRAP_CONTENT;
+                    searchLL.setLayoutParams(parms);
+                    searchET.setVisibility(View.GONE);
+
+                }else{
+                    ViewGroup.LayoutParams parms = searchLL.getLayoutParams();
+                    parms.width =  ViewGroup.LayoutParams.MATCH_PARENT;
+                    searchLL.setLayoutParams(parms);
+                    searchET.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
 
     }
 

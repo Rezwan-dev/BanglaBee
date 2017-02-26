@@ -1,49 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/accent"
-    android:orientation="vertical"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:paddingTop="24dp">
+    android:paddingTop="24dp"
+    android:background="@color/accent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:gravity="center">
-        <com.cunoraz.gifview.library.GifView
-            android:id="@+id/gif"
+        android:layout_height="56dp"
+        android:gravity="center_vertical|end"
+        android:padding="8dp">
+        <LinearLayout
+            android:id="@+id/searchLL"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:gif="@drawable/study_1"
-            app:paused="true"
-            app:repeat="false"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/search_bg"
+            android:animateLayoutChanges="true">
+            <EditText
+                android:layout_marginLeft="8dp"
+                android:id="@+id/searchET"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textCursorDrawable="@null"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@android:drawable/ic_menu_search"/>
+            <ImageView
+                android:id="@+id/searchBtn"
+                android:padding="4dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_search"/>
+
+        </LinearLayout>
+
+
+
 
     </RelativeLayout>
 
-
-  <!--  <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:src="@drawable/ubuntu"/>-->
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp">
 
-    <com.codestation.banglabee.stack.SwipeStack
-        android:id="@+id/swipeStack"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:stack_rotation="0"
-        app:stack_size="3"
-        app:stack_spacing="7dp"
-        android:padding="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_weight="0.70"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:gravity="center">
+
+            <com.cunoraz.gifview.library.GifView
+                android:id="@+id/gif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:gif="@drawable/study_1"
+                app:paused="true"
+                app:repeat="false" />
+
+        </RelativeLayout>
 
 
+        <!--  <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_weight="0.3"
+              android:src="@drawable/ubuntu"/>-->
 
-</LinearLayout>
+        <com.codestation.banglabee.stack.SwipeStack
+            android:id="@+id/swipeStack"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="0.70"
+            android:padding="0dp"
+            app:stack_rotation="0"
+            app:stack_size="3"
+            app:stack_spacing="7dp" />
+
+
+    </LinearLayout>
+</RelativeLayout>
