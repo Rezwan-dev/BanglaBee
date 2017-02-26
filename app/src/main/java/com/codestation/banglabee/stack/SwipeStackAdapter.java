@@ -86,7 +86,7 @@ public class SwipeStackAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public int getResourceId(String pVariableName, String pResourcename, String pPackageName) {
+    private int getResourceId(String pVariableName, String pResourcename, String pPackageName) {
         try {
             return context.getResources().getIdentifier(pVariableName, pResourcename, pPackageName);
         } catch (Exception e) {

@@ -20,4 +20,5 @@
     <color name="toolbar">#17000000</color>
     <color name="test0">#2D3047</color>
     <color name="congrats_bg">#2D3047</color>
+    <color name="search_rv_bg">#87ff5252</color>
 </resources>

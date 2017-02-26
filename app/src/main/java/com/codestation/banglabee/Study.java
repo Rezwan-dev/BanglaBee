@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
     private LinearLayout searchLL;
     private EditText searchET;
     private ImageView searchBtn;
+    private RecyclerView searchRV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
 
         searchLL  = (LinearLayout)findViewById(R.id.searchLL);
         searchET  = (EditText)findViewById(R.id.searchET);
+        searchRV = (RecyclerView)findViewById(R.id.searchRV);
         searchBtn = (ImageView)findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +67,14 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
                     parms.width =  ViewGroup.LayoutParams.WRAP_CONTENT;
                     searchLL.setLayoutParams(parms);
                     searchET.setVisibility(View.GONE);
+                    searchRV.setVisibility(View.GONE);
 
                 }else{
                     ViewGroup.LayoutParams parms = searchLL.getLayoutParams();
                     parms.width =  ViewGroup.LayoutParams.MATCH_PARENT;
                     searchLL.setLayoutParams(parms);
                     searchET.setVisibility(View.VISIBLE);
+                    searchRV.setVisibility(View.VISIBLE);
                 }
             }
         });
