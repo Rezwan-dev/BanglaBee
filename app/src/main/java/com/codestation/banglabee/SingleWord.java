@@ -38,6 +38,7 @@ public class SingleWord extends DialogFragment {
                              Bundle savedInstanceState) {
         convertView = inflater.inflate(R.layout.card, container, false);
         convertView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        init();
         return convertView;
     }
     
@@ -56,23 +57,7 @@ public class SingleWord extends DialogFragment {
 
         TextView textViewCard5 = (TextView) convertView.findViewById(R.id.en_syn);
         textViewCard5.setText(wordModel.getEnglishDefination());
-        convertView.findViewById(R.id.playBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String audioFileName = wordModel.getAudioFileName();
-                Log.e("taggy", audioFileName);
-                audioFileName = audioFileName.replace(".mp3", "");
-//        audioFileName = audioFileName.replace(".", "");
-                int resId = getResourceId(audioFileName, "raw", getActivity().getPackageName());
-                if( resId > 0) {
-                    MediaPlayer mPlayer = MediaPlayer.create(getContext(), resId);
-                    mPlayer.start();
-                }
-                else{
-                    Log.e("taggy", "PlayAudio : media file not found: " + audioFileName + " resId: " + resId);
-                }
-            }
-        });
+        convertView.findViewById(R.id.playBtn).setVisibility(View.GONE);
     }
 
     private int getResourceId(String pVariableName, String pResourcename, String pPackageName) {
