@@ -102,6 +102,7 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
         searchET.setVisibility(View.VISIBLE);
         searchRV.setVisibility(View.VISIBLE);
         searchBtn.setImageDrawable(getResources().getDrawable(R.drawable.ic_close));
+        searchET.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(searchET, InputMethodManager.SHOW_IMPLICIT);
         initSearch();
