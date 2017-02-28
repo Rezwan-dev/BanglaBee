@@ -160,7 +160,7 @@ public class Study extends AppCompatActivity implements SwipeStack.SwipeStackLis
 
     private void performSearch(String currentSearch) {
         if(isSearchOpen) {
-            if (currentSearch.length() < 3 && searchAdapter.getItemCount() > 0) {
+            if (currentSearch.length() < 2 && searchAdapter.getItemCount() > 0) {
                 searchAdapter.newData(new ArrayList<WordModel>());
             }else {
                 searchAdapter.newData(dataFetcer.fetchDataByParrern(currentSearch));

@@ -26,11 +26,15 @@ public class SingleWord extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(STYLE_NO_TITLE, R.style.MyDialog);
+        setStyle(STYLE_NO_TITLE, R.style.WordDialog);
     }
     public static SingleWord getInstance(WordModel wordModel){
         SingleWord.wordModel = wordModel;
         return new SingleWord();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     @Override

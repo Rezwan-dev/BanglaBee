@@ -147,7 +147,7 @@ public class DataFetcer {
 
     public ArrayList<WordModel> fetchDataByParrern(String pattern)
     {
-        Log.e("SB", "fetchDataByParrern called pattern: " + pattern);
+        //Log.e("SB", "fetchDataByParrern called pattern: " + pattern);
 
         Cursor cursor;
         ArrayList<WordModel> wordList = new ArrayList<WordModel>();
@@ -165,13 +165,13 @@ public class DataFetcer {
         String result = new String();
         SQLiteDatabase sd = db.getReadableDatabase();
 
-        cursor = sd.query("archive", null, "BN_WORD LIKE '%" + pattern.trim() +"%'", null, null, null, null);
+        cursor = sd.query("archive", null, "BN_WORD LIKE '%" + pattern.trim() +"%'", null, null, null, null, "30");
 
-        Log.e("SB", "dump of cursor: "+ DatabaseUtils.dumpCursorToString(cursor));
+        //Log.e("SB", "dump of cursor: "+ DatabaseUtils.dumpCursorToString(cursor));
 
         while (cursor.moveToNext()){
 
-            Log.e("SB", "col count : " + cursor.getColumnCount() + " names: " + cursor.getColumnNames() + "           ------ " + cursor.getCount() + " Query: " + "BN_WORD LIKE '%" + pattern +"%'");
+            //Log.e("SB", "col count : " + cursor.getColumnCount() + " names: " + cursor.getColumnNames() + "           ------ " + cursor.getCount() + " Query: " + "BN_WORD LIKE '%" + pattern +"%'");
 
             WordModel wordModel = new WordModel(cursor.getInt(cursor.getColumnIndex("SL")),
                     cursor.getString(cursor.getColumnIndex("BN_WORD")).trim(),

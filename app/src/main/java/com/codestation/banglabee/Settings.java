@@ -1,5 +1,6 @@
 package com.codestation.banglabee;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -191,6 +193,13 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.rateBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchMarket();
+            }
+        });
+
     }
 
     @Override
@@ -269,6 +278,16 @@ public class Settings extends AppCompatActivity {
                     });
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void launchMarket() {
+        Uri uri = Uri.parse("market://details?id=" + getPackageName());
+        Intent myAppLinkToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        try {
+            startActivity(myAppLinkToMarket);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, " unable to find market app", Toast.LENGTH_LONG).show();
         }
     }
 }

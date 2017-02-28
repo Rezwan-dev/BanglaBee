@@ -34,6 +34,7 @@ public class Congrats extends DialogFragment {
     private View v;
     private static String score;
     private View snap;
+    private boolean initialized;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +57,9 @@ public class Congrats extends DialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        init();
+        if(!initialized) {
+            init();
+        }
     }
 
     public void init(){
@@ -119,6 +122,7 @@ public class Congrats extends DialogFragment {
         View reveal = v.findViewById(R.id.reveal);
         reveal.setVisibility(View.VISIBLE);
         reveal.animate().alpha(1.0f).setDuration(600);
+        initialized = true;
 
     }
 
