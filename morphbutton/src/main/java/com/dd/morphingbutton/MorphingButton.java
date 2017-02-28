@@ -67,6 +67,12 @@ public class MorphingButton extends Button {
             mDrawablePressed.setStrokeColor(params.strokeColor);
             mDrawablePressed.setStrokeWidth(params.strokeWidth);
 
+            mDrawableNormal.setColor(params.color);
+            mDrawableNormal.setCornerRadius(params.cornerRadius);
+            mDrawableNormal.setStrokeColor(params.strokeColor);
+            mDrawableNormal.setStrokeWidth(params.strokeWidth);
+
+
             if (params.duration == 0) {
                 morphWithoutAnimation(params);
             } else {
