@@ -49,7 +49,7 @@
                 android:id="@+id/morph"
                 android:layout_width="78dp"
                 android:layout_height="42dp"
-                android:background="@color/blue"
+                android:background="@android:color/transparent"
                 android:text="Submit"
                 android:textColor="@color/white" />
 

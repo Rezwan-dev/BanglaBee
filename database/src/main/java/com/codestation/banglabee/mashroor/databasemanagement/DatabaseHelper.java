@@ -1,10 +1,14 @@
 package com.codestation.banglabee.mashroor.databasemanagement;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
+import android.util.Log;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +23,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //The Android's default system path of your application database.
     private static String DB_PATH = "";
+
+    private static final String DATABASE_VERSION_KEY =  "db_version";
+
+    private static final int CURRENT_DATABASE_VERSION  = 1;
 
 //    private static String DB_NAME = "sbtemp.sqlite";
     private static String DB_NAME = "spellingbee.sqlite";
@@ -37,33 +45,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, 1);
         this.myContext = context;
         DB_PATH= myContext.getDatabasePath(DB_NAME).toString();
+        initialize();
+    }
+
+    private void initialize() {
+        if (checkDataBase()) {
+            SharedPreferences prefs = PreferenceManager
+                    .getDefaultSharedPreferences(myContext);
+            int dbVersion = prefs.getInt(DATABASE_VERSION_KEY, 0);
+            //
+            if (CURRENT_DATABASE_VERSION != dbVersion) {
+                File dbFile = myContext.getDatabasePath(DB_NAME);
+                // delete the old databse
+                if (!dbFile.delete()) {
+                    Log.e("GAYY", "Unable to update database");
+                }
+            }
+        }
+        // create database if needed
+        if (!checkDataBase()) {
+            createDataBase();
+        }
     }
 
     /**
      * Creates a empty database on the system and rewrites it with your own database.
      * */
-    public void createDataBase() throws IOException {
-
-        boolean dbExist = checkDataBase();
-
-        if(dbExist){
-            //do nothing - database already exist
-        }else{
-
+    private void createDataBase() {
+        if (!checkDataBase()) {
             //By calling this method and empty database will be created into the default system path
             //of your application so we are gonna be able to overwrite that database with our database.
             this.getWritableDatabase();
 
             try {
-
                 copyDataBase();
 
+                SharedPreferences prefs = PreferenceManager
+                        .getDefaultSharedPreferences(myContext);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putInt(DATABASE_VERSION_KEY, CURRENT_DATABASE_VERSION);
+                editor.apply();
             } catch (IOException e) {
-
-                throw new Error("Error copying database");
-
+                Log.e("GAYY", "Unable to create database");
             }
-
         }
 
     }
@@ -73,27 +97,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @return true if it exists, false if it doesn't
      */
     private boolean checkDataBase(){
-        //  this.getReadableDatabase();
-
-        SQLiteDatabase checkDB = null;
-
-        try{
-            String myPath = DB_PATH ;
-            checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-
-        }catch(SQLiteException e){
-
-            //database does't exist yet.
-
-        }
-
-        if(checkDB != null){
-
-            checkDB.close();
-
-        }
-
-        return checkDB != null ? true : false;
+        File dbFile = myContext.getDatabasePath(DB_NAME);
+        return dbFile.exists();
     }
 
     /**

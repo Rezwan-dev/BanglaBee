@@ -12,6 +12,7 @@ import com.viksaa.sssplash.lib.model.ConfigSplash;
 
 public class Splash extends AwesomeSplash {
 
+    boolean activityVisible  = true;
 
     @Override
     public void initSplash(ConfigSplash configSplash) {
@@ -60,11 +61,25 @@ public class Splash extends AwesomeSplash {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent  =  new Intent(Splash.this, Home.class);
-                startActivity(intent);
+                if(activityVisible) {
+                    Intent intent = new Intent(Splash.this, Home.class);
+                    startActivity(intent);
+                }
                 finish();
             }
         }, 800);
 
+    }
+
+    @Override
+    protected void onResume() {
+        activityVisible = true;
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        activityVisible = false;
+        super.onPause();
     }
 }

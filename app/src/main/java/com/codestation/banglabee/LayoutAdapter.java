@@ -96,7 +96,6 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     @Override
     public void onBindViewHolder(final SimpleViewHolder holder, final int position) {
         final Resources r = mContext.getResources();
-        final int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, r.getDisplayMetrics());
         switch (items.get(position).getStatus()) {
 
             case -1: {
@@ -119,9 +118,9 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                             items.get(position).setStatus(1);
                             MorphingButton.Params circle = MorphingButton.Params.create()
                                     .duration(500)
-                                    .cornerRadius(px) // 56 dp
-                                    .width(px) // 56 dp
-                                    .height(px) // 56 dp
+                                    .cornerRadius(dpTopx(48)) // 56 dp
+                                    .width(dpTopx(48)) // 56 dp
+                                    .height(dpTopx(48)) // 56 dp
                                     .text("")
                                     .color(r.getColor(R.color.green)) // normal state color
                                     .colorPressed(r.getColor(R.color.green)) // pressed state color
@@ -133,9 +132,9 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                             MorphingButton.Params circle = MorphingButton.Params.create()
                                     .duration(500)
                                     .text("")
-                                    .cornerRadius(px) // 56 dp
-                                    .width(px) // 56 dp
-                                    .height(px) // 56 dp
+                                    .cornerRadius(dpTopx(48)) // 56 dp
+                                    .width(dpTopx(48)) // 56 dp
+                                    .height(dpTopx(48)) // 56 dp
                                     .color(r.getColor(R.color.red)) // normal state color
                                     .colorPressed(r.getColor(R.color.red)) // pressed state color
                                     .icon(R.drawable.wrong); // icon
@@ -168,9 +167,9 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                 MorphingButton.Params circle = MorphingButton.Params.create()
                         .duration(0)
                         .text("")
-                        .cornerRadius(px) // 56 dp
-                        .width(px) // 56 dp
-                        .height(px) // 56 dp
+                        .cornerRadius(dpTopx(48)) // 56 dp
+                        .width(dpTopx(48)) // 56 dp
+                        .height(dpTopx(48)) // 56 dp
                         .color(r.getColor(R.color.red)) // normal state color
                         .colorPressed(r.getColor(R.color.red)) // pressed state color
                         .icon(R.drawable.wrong); // icon
@@ -185,9 +184,9 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
                 holder.editTv.setText(items.get(position).getWordInput());
                 MorphingButton.Params circle = MorphingButton.Params.create()
                         .duration(0)
-                        .cornerRadius(px) // 56 dp
-                        .width(px) // 56 dp
-                        .height(px) // 56 dp
+                        .cornerRadius(dpTopx(48)) // 56 dp
+                        .width(dpTopx(48)) // 56 dp
+                        .height(dpTopx(48)) // 56 dp
                         .text("")
                         .color(r.getColor(R.color.green)) // normal state color
                         .colorPressed(r.getColor(R.color.green)) // pressed state color

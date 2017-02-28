@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/morphbutton/morphbutton.iml" filepath="$PROJECT_DIR$/morphbutton/morphbutton.iml" />
       <module fileurl="file://$PROJECT_DIR$/recycleviewpager/recycleviewpager.iml" filepath="$PROJECT_DIR$/recycleviewpager/recycleviewpager.iml" />
       <module fileurl="file://$PROJECT_DIR$/searchView/searchView.iml" filepath="$PROJECT_DIR$/searchView/searchView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spellingc.iml" filepath="$PROJECT_DIR$/spellingc.iml" />
       <module fileurl="file://$PROJECT_DIR$/splash/splash.iml" filepath="$PROJECT_DIR$/splash/splash.iml" />
       <module fileurl="file://$PROJECT_DIR$/vusikview/vusikview.iml" filepath="$PROJECT_DIR$/vusikview/vusikview.iml" />
     </modules>

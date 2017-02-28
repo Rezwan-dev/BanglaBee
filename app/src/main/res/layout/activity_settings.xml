@@ -125,6 +125,7 @@
                 app:textSize="44" />
         </LinearLayout>
         <TextView
+            android:id="@+id/rateBtn"
             android:layout_marginTop="16dp"
             android:textAlignment="center"
             android:padding="8dp"

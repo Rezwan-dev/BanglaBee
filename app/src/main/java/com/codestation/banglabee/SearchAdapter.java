@@ -1,6 +1,8 @@
 package com.codestation.banglabee;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SimpleViewHolder> {
     private static final int DEFAULT_ITEM_COUNT = 15;
 
-    private final Context mContext;
+    private final AppCompatActivity mContext;
     private ArrayList<WordModel> items;
 
 
@@ -36,7 +38,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SimpleView
     }
 
 
-    public SearchAdapter(Context context, ArrayList<WordModel> items) {
+    public SearchAdapter(AppCompatActivity context, ArrayList<WordModel> items) {
         mContext = context;
         this.items = items;
     }
@@ -57,15 +59,23 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SimpleView
 
     @Override
     public void onBindViewHolder(final SimpleViewHolder holder, final int position) {
-
-
+        holder.searchTV.setText(items.get(position).getWord());
+        holder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(items.get(position));
+            }
+        });
     }
 
+    private void showDialog(WordModel wordModel) {
+        SingleWord.getInstance(wordModel).show(mContext.getSupportFragmentManager(), "dialog");
+    }
 
 
     @Override
     public int getItemCount() {
-        return 15;
+        return items.size();
     }
 
 }
