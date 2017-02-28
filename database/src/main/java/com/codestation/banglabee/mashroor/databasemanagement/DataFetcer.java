@@ -52,7 +52,7 @@ public class DataFetcer {
         db = new DatabaseHelper(context);
         try {
 
-            db.createDataBase();
+           // db.createDataBase();
             db.openDataBase();
 
         } catch (Exception e) {
@@ -119,7 +119,7 @@ public class DataFetcer {
 
         db = new DatabaseHelper(context);
         try {
-            db.createDataBase();
+            //db.createDataBase();
             db.openDataBase();
 
         } catch (Exception e) {
@@ -155,7 +155,7 @@ public class DataFetcer {
         DatabaseHelper db;
         db = new DatabaseHelper(context);
         try {
-            db.createDataBase();
+           // db.createDataBase();
             db.openDataBase();
 
         } catch (Exception e) {
